@@ -167,20 +167,52 @@ footer{padding:2rem 0 3rem;font:.85rem var(--fm);color:var(--mu)}
 
 <details class="ep"><summary><span class="pa"><b>GET</b> /projetos/novabank</span><h3>NovaBank API</h3><span class="rt">roda localmente</span></summary>
 <div class="eb"><div>
-<p>API REST de banco digital: clientes, contas, depósito, saque, transferência PIX, chaves PIX, extrato e histórico.</p>
-<ul><li>Camadas Controller, Service, Repository e Database, com diagrama PlantUML versionado no repositório.</li></ul>
+<p>API REST de um banco digital, feita com Java 21 e Spring Boot. O projeto cobre o ciclo básico de uma conta bancária: cadastrar o cliente, abrir a conta, movimentar dinheiro e consultar o que aconteceu.</p>
+<p class="mu">O que ela faz:</p>
+<ul class="vs">
+<li><b>Clientes e contas</b>Cadastro de clientes e gerenciamento de contas.</li>
+<li><b>Movimentações</b>Depósito e saque.</li>
+<li><b>PIX</b>Transferência PIX e gerenciamento de chaves PIX.</li>
+<li><b>Consultas</b>Extrato e histórico de transações.</li>
+<li><b>Segurança</b>Autenticação com JWT usando Spring Security.</li>
+</ul>
+<p class="mu">Como está organizada:</p>
+<ul>
+<li>Arquitetura em camadas: Controller → Service → Repository → Database, cada uma com uma responsabilidade.</li>
+<li>Diagrama da arquitetura em PlantUML, versionado junto ao código no repositório.</li>
+<li>Bean Validation para validar os dados que chegam e Swagger/OpenAPI para documentar e testar os endpoints.</li>
+<li>Persistência com Spring Data JPA e Hibernate sobre PostgreSQL.</li>
+<li>Spring Security protegendo os endpoints, com autenticação baseada em token JWT.</li>
+</ul>
 </div><div>
-<ul class="ch"><li>Java 21</li><li>Spring Boot</li><li>Spring Data JPA</li><li>Hibernate</li><li>PostgreSQL</li><li>Bean Validation</li><li>Lombok</li><li>Swagger/OpenAPI</li></ul>
+<ul class="ch"><li>Java 21</li><li>Spring Boot</li><li>Spring Data JPA</li><li>Hibernate</li><li>Spring Security</li><li>JWT</li><li>PostgreSQL</li><li>Bean Validation</li><li>Lombok</li><li>Swagger/OpenAPI</li></ul>
 <button class="cp" type="button" data-c="git clone https://github.com/Guui360gpa/novabank-api" aria-live="polite"><span>$ </span>git clone …/novabank-api</button>
 <a class="lk" href="https://github.com/Guui360gpa/novabank-api" target="_blank" rel="noopener">Ver repositório no GitHub ↗</a>
 </div></div></details>
 
 <details class="ep"><summary><span class="pa"><b>GET</b> /projetos/screenmatch</span><h3>Screenmatch API</h3><span class="rt">roda localmente</span></summary>
 <div class="eb"><div>
-<p>Consome a OMDb API (JSON via Jackson), persiste o catálogo em PostgreSQL e expõe 8 endpoints.</p>
-<ul><li>Séries, top 5 por avaliação e lançamentos.</li><li>Busca por ID e por categoria.</li><li>Temporadas e top 5 episódios.</li></ul>
+<p>API REST em Java que simula o backend de uma plataforma de streaming. Ela consulta a OMDb API para buscar dados de filmes e séries, guarda o catálogo no PostgreSQL e oferece consultas próprias sobre esse catálogo.</p>
+<p class="mu">Como funciona:</p>
+<ul>
+<li>Consome a OMDb API e converte o JSON da resposta com Jackson.</li>
+<li>Persiste séries e episódios (as duas entidades principais) com Spring Data JPA.</li>
+<li>Organizada em camadas, como projeto de estudo de boas práticas de back-end em Java.</li>
+</ul>
+<p class="mu">Os 8 endpoints:</p>
+<ul class="vs">
+<li><b>/series</b>Lista todas as séries catalogadas.</li>
+<li><b>/series/top5</b>As 5 séries mais bem avaliadas.</li>
+<li><b>/series/lancamentos</b>Lançamentos, pelo ano da temporada.</li>
+<li><b>/series/{id}</b>Busca uma série pelo id no banco.</li>
+<li><b>/series/{id}/temporadas/todas</b>Todas as temporadas de uma série.</li>
+<li><b>/series/{id}/temporadas/{numero}</b>Uma temporada específica.</li>
+<li><b>/series/categoria/{nomeCategoria}</b>Séries por categoria, como Ação, Drama ou Comédia.</li>
+<li><b>/series/{id}/temporadas/top</b>Os 5 melhores episódios de uma série.</li>
+</ul>
+<p class="mu">Para rodar, é preciso uma chave gratuita da OMDb, configurada no application.properties, e o comando <code>./mvnw spring-boot:run</code>. A aplicação sobe em localhost:8080.</p>
 </div><div>
-<ul class="ch"><li>Java 17</li><li>Spring Boot</li><li>Spring Data JPA</li><li>PostgreSQL</li><li>Jackson</li><li>Maven</li></ul>
+<ul class="ch"><li>Java 17</li><li>Spring Boot</li><li>Spring Web</li><li>Spring Data JPA</li><li>PostgreSQL</li><li>Jackson</li><li>OMDb API</li><li>Maven</li></ul>
 <button class="cp" type="button" data-c="git clone https://github.com/Guui360gpa/screenmatch-api-rest" aria-live="polite"><span>$ </span>git clone …/screenmatch-api-rest</button>
 <a class="lk" href="https://github.com/Guui360gpa/screenmatch-api-rest" target="_blank" rel="noopener">Ver repositório no GitHub ↗</a>
 </div></div></details>
