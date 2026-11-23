@@ -105,6 +105,7 @@ figcaption{font:.8rem var(--fm);color:var(--mu);margin-top:1.1rem}
 .ct li:last-child a{border-bottom:1px solid var(--ln)}
 .ct a:hover{color:var(--ac);padding-left:.75rem}
 .ct span{align-self:center;font:.88rem var(--fm);color:var(--mu);overflow-wrap:anywhere;text-align:right}
+.lg{list-style:none;margin:2rem 0 0;padding:0}.lg li{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.1rem 0;border-top:1px solid var(--ln)}.lg li:last-child{border-bottom:1px solid var(--ln)}.lg strong{font:800 clamp(1.4rem,3.4vw,2.2rem)/1.1 var(--fh);letter-spacing:-.02em}.lg span{font:.88rem var(--fm);color:var(--mu);text-align:right}
 footer{padding:2rem 0 3rem;font:.85rem var(--fm);color:var(--mu)}
 @media(prefers-reduced-motion:reduce){*,::before,::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
@@ -114,7 +115,7 @@ footer{padding:2rem 0 3rem;font:.85rem var(--fm);color:var(--mu)}
 <header><div class="w"><a class="br" href="#inicio"><b>~/</b>guilherme-paiva</a>
 <button id="th" type="button" aria-label="Tema escuro" aria-pressed="false"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 3a7 7 0 0 1 0 14z" fill="currentColor"/></svg></button></div><i class="bar" aria-hidden="true"></i></header>
 <nav class="rail" aria-label="Seções da página"><i aria-hidden="true"></i><ol>
-<li><a href="#inicio">/início</a></li><li><a href="#sobre">/sobre</a></li><li><a href="#projetos">/projetos</a></li><li><a href="#stack">/stack</a></li><li><a href="#formacao">/formação</a></li><li><a href="#contato">/contato</a></li></ol></nav>
+<li><a href="#inicio">/início</a></li><li><a href="#sobre">/sobre</a></li><li><a href="#projetos">/projetos</a></li><li><a href="#stack">/stack</a></li><li><a href="#formacao">/formação</a></li><li><a href="#idiomas">/idiomas</a></li><li><a href="#contato">/contato</a></li></ol></nav>
 
 <main id="main">
 <section id="inicio"><div class="w hero">
@@ -167,52 +168,20 @@ footer{padding:2rem 0 3rem;font:.85rem var(--fm);color:var(--mu)}
 
 <details class="ep"><summary><span class="pa"><b>GET</b> /projetos/novabank</span><h3>NovaBank API</h3><span class="rt">roda localmente</span></summary>
 <div class="eb"><div>
-<p>API REST de um banco digital, feita com Java 21 e Spring Boot. O projeto cobre o ciclo básico de uma conta bancária: cadastrar o cliente, abrir a conta, movimentar dinheiro e consultar o que aconteceu.</p>
-<p class="mu">O que ela faz:</p>
-<ul class="vs">
-<li><b>Clientes e contas</b>Cadastro de clientes e gerenciamento de contas.</li>
-<li><b>Movimentações</b>Depósito e saque.</li>
-<li><b>PIX</b>Transferência PIX e gerenciamento de chaves PIX.</li>
-<li><b>Consultas</b>Extrato e histórico de transações.</li>
-<li><b>Segurança</b>Autenticação com JWT usando Spring Security.</li>
-</ul>
-<p class="mu">Como está organizada:</p>
-<ul>
-<li>Arquitetura em camadas: Controller → Service → Repository → Database, cada uma com uma responsabilidade.</li>
-<li>Diagrama da arquitetura em PlantUML, versionado junto ao código no repositório.</li>
-<li>Bean Validation para validar os dados que chegam e Swagger/OpenAPI para documentar e testar os endpoints.</li>
-<li>Persistência com Spring Data JPA e Hibernate sobre PostgreSQL.</li>
-<li>Spring Security protegendo os endpoints, com autenticação baseada em token JWT.</li>
-</ul>
+<p>API REST de banco digital: clientes, contas, depósito, saque, transferência PIX, chaves PIX, extrato e histórico.</p>
+<ul><li>Camadas Controller, Service, Repository e Database, com diagrama PlantUML versionado no repositório.</li></ul>
 </div><div>
-<ul class="ch"><li>Java 21</li><li>Spring Boot</li><li>Spring Data JPA</li><li>Hibernate</li><li>Spring Security</li><li>JWT</li><li>PostgreSQL</li><li>Bean Validation</li><li>Lombok</li><li>Swagger/OpenAPI</li></ul>
+<ul class="ch"><li>Java 21</li><li>Spring Boot</li><li>Spring Data JPA</li><li>Hibernate</li><li>PostgreSQL</li><li>Bean Validation</li><li>Lombok</li><li>Swagger/OpenAPI</li></ul>
 <button class="cp" type="button" data-c="git clone https://github.com/Guui360gpa/novabank-api" aria-live="polite"><span>$ </span>git clone …/novabank-api</button>
 <a class="lk" href="https://github.com/Guui360gpa/novabank-api" target="_blank" rel="noopener">Ver repositório no GitHub ↗</a>
 </div></div></details>
 
 <details class="ep"><summary><span class="pa"><b>GET</b> /projetos/screenmatch</span><h3>Screenmatch API</h3><span class="rt">roda localmente</span></summary>
 <div class="eb"><div>
-<p>API REST em Java que simula o backend de uma plataforma de streaming. Ela consulta a OMDb API para buscar dados de filmes e séries, guarda o catálogo no PostgreSQL e oferece consultas próprias sobre esse catálogo.</p>
-<p class="mu">Como funciona:</p>
-<ul>
-<li>Consome a OMDb API e converte o JSON da resposta com Jackson.</li>
-<li>Persiste séries e episódios (as duas entidades principais) com Spring Data JPA.</li>
-<li>Organizada em camadas, como projeto de estudo de boas práticas de back-end em Java.</li>
-</ul>
-<p class="mu">Os 8 endpoints:</p>
-<ul class="vs">
-<li><b>/series</b>Lista todas as séries catalogadas.</li>
-<li><b>/series/top5</b>As 5 séries mais bem avaliadas.</li>
-<li><b>/series/lancamentos</b>Lançamentos, pelo ano da temporada.</li>
-<li><b>/series/{id}</b>Busca uma série pelo id no banco.</li>
-<li><b>/series/{id}/temporadas/todas</b>Todas as temporadas de uma série.</li>
-<li><b>/series/{id}/temporadas/{numero}</b>Uma temporada específica.</li>
-<li><b>/series/categoria/{nomeCategoria}</b>Séries por categoria, como Ação, Drama ou Comédia.</li>
-<li><b>/series/{id}/temporadas/top</b>Os 5 melhores episódios de uma série.</li>
-</ul>
-<p class="mu">Para rodar, é preciso uma chave gratuita da OMDb, configurada no application.properties, e o comando <code>./mvnw spring-boot:run</code>. A aplicação sobe em localhost:8080.</p>
+<p>Consome a OMDb API (JSON via Jackson), persiste o catálogo em PostgreSQL e expõe 8 endpoints.</p>
+<ul><li>Séries, top 5 por avaliação e lançamentos.</li><li>Busca por ID e por categoria.</li><li>Temporadas e top 5 episódios.</li></ul>
 </div><div>
-<ul class="ch"><li>Java 17</li><li>Spring Boot</li><li>Spring Web</li><li>Spring Data JPA</li><li>PostgreSQL</li><li>Jackson</li><li>OMDb API</li><li>Maven</li></ul>
+<ul class="ch"><li>Java 17</li><li>Spring Boot</li><li>Spring Data JPA</li><li>PostgreSQL</li><li>Jackson</li><li>Maven</li></ul>
 <button class="cp" type="button" data-c="git clone https://github.com/Guui360gpa/screenmatch-api-rest" aria-live="polite"><span>$ </span>git clone …/screenmatch-api-rest</button>
 <a class="lk" href="https://github.com/Guui360gpa/screenmatch-api-rest" target="_blank" rel="noopener">Ver repositório no GitHub ↗</a>
 </div></div></details>
@@ -244,6 +213,15 @@ footer{padding:2rem 0 3rem;font:.85rem var(--fm);color:var(--mu)}
 <section id="formacao"><div class="w">
 <h2>Formação</h2>
 <div class="ed"><p><strong>Tecnologia em Desenvolvimento de Software Multiplataforma</strong></p><p class="mu">FATEC Osasco · em andamento</p></div>
+</div></section>
+
+<section id="idiomas"><div class="w">
+<h2>Idiomas</h2>
+<ul class="lg">
+<li><strong>Português</strong><span>nativo / fluente</span></li>
+<li><strong>Inglês</strong><span>intermediário</span></li>
+<li><strong>Espanhol</strong><span>básico / intermediário</span></li>
+</ul>
 </div></section>
 
 <section id="contato"><div class="w">
